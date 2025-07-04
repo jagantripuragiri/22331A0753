@@ -1,53 +1,47 @@
-// utils/storage.js
 
-/**
- * In-memory storage with expiry cleanup for short URLs and clicks
- */
+const shortUrls = new Map();
 
-const shortUrls = new Map(); // key: shortcode, value: { originalUrl, expiry, createdAt, clicks: [] }
+function generateShortcode(length = 6) {
+  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let code = '';
+  for (let i = 0; i < length; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return code;
+}
 
-function saveShortUrl(shortcode, originalUrl, expiry) {
-  const createdAt = new Date();
+function createShortUrl(originalUrl, expiry) {
+  const shortcode = generateShortcode();
+
+  const expiresAt = expiry ? new Date(expiry) : new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // default 7 days
+
   shortUrls.set(shortcode, {
     originalUrl,
-    expiry,
-    createdAt,
+    expiry: expiresAt,
     clicks: []
   });
+
+  return {
+    shortUrl: `http://localhost:3000/${shortcode}`,
+    expiry: expiresAt
+     
+  };
 }
 
-function getShortUrl(shortcode) {
-  return shortUrls.get(shortcode);
+
+function getShortUrl(code) {
+  return shortUrls.get(code);
 }
 
-function shortcodeExists(shortcode) {
-  return shortUrls.has(shortcode);
-}
-
-// Save click data for shortcode
-function recordClick(shortcode, clickData) {
-  const entry = shortUrls.get(shortcode);
+function recordClick(code, data) {
+  const entry = shortUrls.get(code);
   if (entry) {
-    entry.clicks.push(clickData);
+    entry.clicks.push(data);
   }
 }
-
-// Remove expired shortcodes
-function cleanupExpired() {
-  const now = new Date();
-  for (const [key, value] of shortUrls.entries()) {
-    if (value.expiry <= now) {
-      shortUrls.delete(key);
-    }
-  }
-}
-
-// Periodic cleanup every 5 minutes
-setInterval(cleanupExpired, 5 * 60 * 1000);
 
 module.exports = {
-  saveShortUrl,
+  createShortUrl,
   getShortUrl,
-  shortcodeExists,
-  recordClick,
+  recordClick
 };
