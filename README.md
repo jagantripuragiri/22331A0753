@@ -48,3 +48,12 @@ http://localhost:3000
 first you need to select method POST and give url: "http://localhost:3000/shorturls" in url section,  then you need to pass json format from body thats it you get a response of shorted link.
 
 
+
+### You can reach me from 
+
+Email: [jagantripuragiri@gmail.com](mailto:jagantripuragiri@gmail.com)
+
+GitHub: [github.com/jagantripuragiri](https://github.com/jagantripuragiri)
+
+LinkedIn: [linkedin.com/in/jagantripuragiri](https://www.linkedin.com/in/jagantripuragiri)
+
