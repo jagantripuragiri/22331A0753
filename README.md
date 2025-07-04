@@ -51,7 +51,7 @@ first you need to select method POST and give url: "http://localhost:3000/shortu
 
 ### You can reach me from 
 
-Email: [ripuragirijagan27@gmail.com](mailto:tripuragirijagan27@gmail.com)
+Email: [tripuragirijagan27@gmail.com](mailto:tripuragirijagan27@gmail.com)
 
 GitHub: [github.com/jagantripuragiri](https://github.com/jagantripuragiri)
 
