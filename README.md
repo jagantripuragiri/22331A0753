@@ -45,6 +45,6 @@ http://localhost:3000
 
 ### You can test our URL Shorted Using Insomia or postman 
 
-first you need to give url: http://localhost:3000/ in url and select method POST then you need to pass json format from body thats it you get a response of shorted link.
+first you need to select method POST and give url: "http://localhost:3000/shorturls" in url section,  then you need to pass json format from body thats it you get a response of shorted link.
 
 
