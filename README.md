@@ -1,6 +1,4 @@
-*iam writing this README.md after time out because you need to know how to use this thing.
 
-*also i changed some images and files that are vunerable or leaking senstive information , here is the description of the project 
 
 #  URL Shortener Backend
 
